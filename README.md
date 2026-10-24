@@ -77,9 +77,18 @@ npm run dev
 # Build Vite production bundle and package desktop app with electron-builder
 npm run dist
 ```
-The packaged desktop application will be generated in `dist-electron/`:
-- **macOS**: `dist-electron/mac-arm64/PG Dissertation Management System.app` and `.dmg`
+The packaged desktop application is generated in `dist-electron/`:
+- **macOS**: `dist-electron/PG Dissertation Management System-1.0.0-arm64.dmg` (~84MB optimized single-arch build with maximum compression and stripped locale assets)
 - **Windows**: `dist-electron/win-unpacked/` and setup executable (configured in `package.json`)
+
+### Automated Verification & Integrity Testing
+```bash
+# 1. Verify NLP duplicate detection engine and similarity scoring
+node scripts/verify-similarity.js
+
+# 2. Validate SQLite database schema, foreign key enforcement, and default parameters
+npx electron scripts/validate-db.js
+```
 
 ---
 
