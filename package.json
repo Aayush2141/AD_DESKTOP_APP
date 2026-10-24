@@ -18,20 +18,38 @@
   "build": {
     "appId": "gov.ayush.pgdms",
     "productName": "PG Dissertation Management System",
+    "compression": "maximum",
+    "electronLanguages": [
+      "en"
+    ],
+    "afterPack": "scripts/clean-framework-locales.js",
     "directories": {
       "output": "dist-electron"
     },
     "files": [
       "dist/**/*",
       "electron/**/*",
-      "node_modules/**/*"
+      "package.json",
+      "!node_modules/better-sqlite3/deps/**/*",
+      "!node_modules/better-sqlite3/src/**/*",
+      "!src/**/*",
+      "!scripts/**/*",
+      "!data/**/*",
+      "!README.md"
     ],
     "mac": {
       "category": "public.app-category.education",
       "target": [
-        "dir",
-        "dmg"
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
       ]
+    },
+    "dmg": {
+      "format": "ULFO"
     },
     "win": {
       "target": [
@@ -45,28 +63,28 @@
       ]
     },
     "asarUnpack": [
-      "**/node_modules/better-sqlite3/**"
+      "**/node_modules/better-sqlite3/build/Release/**"
     ]
   },
   "dependencies": {
-    "better-sqlite3": "^11.8.1",
     "bcryptjs": "^2.4.3",
-    "clsx": "^2.1.1",
-    "jspdf": "^2.5.2",
-    "jspdf-autotable": "^3.8.4",
-    "lucide-react": "^0.469.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "recharts": "^2.15.0",
-    "tailwind-merge": "^2.6.0"
+    "better-sqlite3": "^11.8.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
     "concurrently": "^9.1.2",
     "electron": "^33.2.1",
     "electron-builder": "^25.1.8",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
+    "lucide-react": "^0.469.0",
     "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.15.0",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss": "^3.4.17",
     "vite": "^6.0.7",
     "wait-on": "^8.0.1"
