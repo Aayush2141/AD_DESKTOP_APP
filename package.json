@@ -6,7 +6,8 @@
   "scripts": {
     "dev:vite": "vite",
     "dev:electron": "electron .",
-    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
+    "dev": "concurrently \"vite\" \"sh scripts/start-electron.sh\"",
+    "start-electron": "sh scripts/start-electron.sh",
     "build:vite": "vite build",
     "build": "vite build",
     "seed": "electron electron/db/seed-runner.js",
